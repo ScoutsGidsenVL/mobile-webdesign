@@ -11,6 +11,39 @@
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <style>
+      .logo {
+        position: absolute;
+        width: 15vmin;
+        right: 5vmin;
+        top: 5vmin;
+        z-index: -1;
+        opacity: 0.7;
+      }
+
+      .bitly {
+        position: absolute;
+        left: 5vmin;
+        bottom: 5vmin;
+        opacity: 0.7;
+        z-index: 1;
+        color: #572600;
+        font-family: 'Fjalla One', sans-serif;
+        font-size: 3vmin;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .bitly:hover {
+        opacity: 1;
+        color: #748D26;
+      }
+
+      pre {
+        margin-top: 3em !important;
+      }
+    </style>
   </head>
   <body style="background: url(https://static.scoutsengidsenvlaanderen.be/images/grunge-tile-beige.png);">
     <div class="reveal">
@@ -61,9 +94,10 @@
           </section>
           <section data-markdown>
             ### Order
-            1. Colors and logos
+            1. Content structure
+            1. Resolutions and accessibility
+            1. Wireframes
             1. Stable html structure
-            1. Viewport
             1. CSS
             1. Javascript
           </section>
@@ -72,19 +106,6 @@
             * Separate website &rarr; Duplication
             * Adaptive content &rarr; Less is more
             * Same content &rarr; Simple
-          </section>
-          <section data-markdown>
-            ### CSS
-            * Server-side dynamic css &#8594; Complicated
-            * Responsive css using media queries &#8594; _Simple_
-          </section>
-          <section>
-            <h3>Viewport</h3>
-            <pre style="font-size: 45%"><code data-trim data-noescape>
-            &lt;head>
-              &lt;meta name="viewport"
-                  content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-            </code></pre>
           </section>
           <section data-markdown>
 ### Resolutions
@@ -100,23 +121,59 @@
           </section>
           <section data-markdown>
             ## Mobile first
-            If possible &rarr; new layout/website
+            * If possible &rarr; new layout/website
+            * Both for wireframes and CSS
           </section>
           <section data-markdown>
-            ### Media queries
-            * Current users?
-            * Work in steps &rarr; Start with 2
-
-            **TODO: example code**
+            ## Fluid second
+            * Easy to maintain
+            * Consistent quality
+          </section>
+          <section>
+            <h3>Media queries third</h3>
+            <ul>
+              <li>Current users?</li>
+              <li>Add where <em>necessary</em></li>
+              <li>Re-use min/max-widths &rarr; testing</li>
+            </ul>
+            <pre><code data-trim data-noescape>
+              &lt;style>
+                @media (min-width: 600px) {
+                  .sidebar {
+                    float: left;
+                  }
+                }
+              &lt;/style>
+            </code></pre>
+          </section>
+          <section data-markdown>
+            ### CSS techniques
+            * Server-side dynamic css &#8594; Complicated
+            * Responsive css &#8594; _Simple_
+          </section>
+          <section>
+            <h3>Viewport</h3>
+            <pre style="font-size: 45%"><code data-trim data-noescape>
+            &lt;head>
+              &lt;meta name="viewport"
+                  content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+            </code></pre>
+          </section>
+          <section data-markdown>
+            ## Testing
+            * Desktop
+            * Smartphone
+          </section>
+          <section data-background-image='screenshots/Screenshot_2017-02-08-14-22-45.png'
+              data-background-size='contain' data-background-position='5% 0%'>
+            <div style="width: 50%; float: right;">
+              <h3>Getting started</h3>
+              <p>Single page with all kinds of content</p>
+              <a href="https://github.com/bryanbraun/poor-mans-styleguide" target="blank_">poor-mans-styleguide</a>
+            </div>
           </section>
           <section data-markdown>
             ### Font size
-          </section>
-          <section data-markdown>
-            ### Getting started
-            Single page with all kinds of content
-
-            **TODO img**
           </section>
           <section data-markdown>
             ## White space
@@ -127,6 +184,13 @@
           <section data-markdown>
             ## Examples
             (Disclaimer)
+          </section>
+          <section data-background-image='screenshots/Screenshot_2017-02-07-13-38-39.png'
+              data-background-size='contain' data-background-position='5% 0%'>
+            <div style="width: 50%; float: right;">
+              <h3>Redudant content</h3>
+              <em>Sin categor&iacute;a</em> and <em>administrador</em>
+            </div>
           </section>
           <section data-background-image='screenshots/Screenshot_2017-02-07-13-24-25.png'
               data-background-size='contain' data-background-position='5% 0%'>
@@ -147,7 +211,11 @@
               data-background-size='contain' data-background-position='5% 0%'>
             <div style="width: 50%; float: right;">
               <h3>Tables</h3>
-              TODO: css
+              <pre style="font-size: 45%"><code data-trim data-noescape>
+                table, thead, tbody, th, td, tr {
+                  display: block;
+                }
+              </code></pre>
             </div>
           </section>
           <section data-background-image='screenshots/Screenshot_2017-02-07-13-29-17.png'
@@ -158,8 +226,18 @@
                 <li>Title to long</li>
                 <li>Image not cropped</li>
               </ul>
-
-              <p>TODO: css (overflow: hidden)</p>
+              <pre><code data-trim data-noescape>
+                .title {
+                  overflow: hidden;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                }
+              </code></pre>
+              <pre><code data-trim data-noescape>
+                .photo_wrapper {
+                  overflow: hidden;
+                }
+              </code></pre>
             </div>
           </section>
           <section data-background-image='screenshots/Screenshot_2017-02-07-13-31-12.png'
@@ -219,13 +297,6 @@
               <h3>Word documents</h3>
             </div>
           </section>
-          <section data-background-image='screenshots/Screenshot_2017-02-07-13-38-39.png'
-              data-background-size='contain' data-background-position='5% 0%'>
-            <div style="width: 50%; float: right;">
-              <h3>Redudant content</h3>
-              <em>Sin categor&iacute;a</em> and <em>administrador</em>
-            </div>
-          </section>
           <section data-background-image='screenshots/Screenshot_2017-02-07-13-42-49.png'
               data-background-size='contain' data-background-position='5% 0%'>
             <div style="width: 50%; float: right;">
@@ -245,12 +316,9 @@
      </div>
     </div>
 
-    <img style="position: absolute; width: 15vmin; right: 5vmin; top: 5vmin; z-index: -1; opacity: 0.7;"
-        src="https://static.scoutsengidsenvlaanderen.be/images/logo/logo-alt.png">
+    <img class="logo" src="https://static.scoutsengidsenvlaanderen.be/images/logo/logo-alt.png">
 
-    <div style="position: absolute; left: 5vmin; bottom: 5vmin; z-index: -1; opacity: 0.7;">
-      <span style="color: #572600; font-size: 20px; font-weight: bold;">bit.ly/2kJIPoL</span>
-    </div>
+    <a class="bitly" href="https://bit.ly/2kJIPoL" target="_blank">bit.ly/2kJIPoL</a>
 
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.js"></script>
